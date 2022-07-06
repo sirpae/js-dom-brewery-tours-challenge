@@ -94,7 +94,7 @@ function renderBreweries() {
       // Create link tag with website url.
       const websiteLink = document.createElement("a")
       websiteLink.href = brewery.website_url
-      websiteLink.innerText = "Website"
+      websiteLink.innerText = "Visit Website"
 
       // Add website components to the website section.
       websiteSection.appendChild(websiteLink)
