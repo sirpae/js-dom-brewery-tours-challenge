@@ -112,7 +112,6 @@ function renderBreweries() {
   }
 }
 
-
-  render = () => {
-    renderBreweries();
-  };
+render = () => {
+  renderBreweries();
+};
