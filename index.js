@@ -114,4 +114,4 @@ function renderBreweries() {
 
 render = () => {
   renderBreweries();
-};
+}; 
