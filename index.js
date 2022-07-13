@@ -11,7 +11,6 @@ const state = {
   breweries: [],
 };
 
-
 // Setup listener and fetching 
 
 stateForm.addEventListener("submit", (event) => {
