@@ -6,9 +6,12 @@ const searchInput = document.querySelector("#select-state")
 
 const breweriesList = document.querySelector("#breweries-list")
 
+const breweryTypeSelect = document.querySelector("#filter-by-type")
+
 const state = {
   usState: "",
   breweries: [],
+  breweryType: ""
 };
 
 // Setup listener and fetching 
@@ -21,21 +24,36 @@ stateForm.addEventListener("submit", (event) => {
 
   fetch(`${apiURL}?by_state=${state.usState}&per_page=100`)
     .then((res) => {
-      // console.log("my fetch", res);
       return res.json();
     })
     .then((breweries) => {
-      // console.log("breweries", breweries);
       state.breweries = breweries;
 
       render();
     });
 });
 
+breweryTypeSelect.addEventListener("change", (event) => {
+  const value = event.target.value;
+  state.breweryType = value;
+  renderBreweries();
+})
+
 
 function renderBreweries() {
+  let breweryTypes = []
+
+  if (state.breweryType === "") {
+    breweryTypes = ['micro', 'regional', 'brewpub']
+  } else {
+    breweryTypes = [state.breweryType]
+  }
+
+  while (breweriesList.firstChild) {
+    breweriesList.removeChild(breweriesList.firstChild);
+  }
+
   for (const brewery of state.breweries) {
-    const breweryTypes = ['micro', 'regional', 'brewpub']
     if (breweryTypes.includes(brewery.brewery_type)) {
       const infoList = document.createElement("li")
       
